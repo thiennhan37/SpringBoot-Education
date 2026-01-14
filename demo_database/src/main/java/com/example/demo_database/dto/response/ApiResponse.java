@@ -1,7 +1,6 @@
-package com.example.demo_database.dto.request;
+package com.example.demo_database.dto.response;
 
 import com.example.demo_database.exception.ErrorCode;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +11,8 @@ import lombok.NoArgsConstructor;
 
 
 //@JsonInclude(JsonInclude.Include.NON_NULL)
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data @Builder
+@NoArgsConstructor @AllArgsConstructor
 public class ApiResponse<T> {
     public int code = 1000;
     public String message = "Successful";

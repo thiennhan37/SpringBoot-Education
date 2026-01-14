@@ -1,6 +1,6 @@
 package com.example.demo_database.controller;
 
-import com.example.demo_database.dto.request.ApiResponse;
+import com.example.demo_database.dto.response.ApiResponse;
 import com.example.demo_database.dto.request.UserCreationRequest;
 import com.example.demo_database.dto.request.UserUpdateRequest;
 import com.example.demo_database.dto.response.UserResponse;
@@ -8,8 +8,6 @@ import com.example.demo_database.entity.User;
 import com.example.demo_database.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

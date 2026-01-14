@@ -7,3 +7,5 @@ spring:
     url: "jdbc:mysql://localhost:3306/spring_boot"
     username: root
     password: NhanThien24
+jwt:
+  signerKey: "eSNwp01GDWLGaME9rWUyq57isilK6b2v"

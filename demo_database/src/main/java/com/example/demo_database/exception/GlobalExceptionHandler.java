@@ -1,12 +1,10 @@
 package com.example.demo_database.exception;
 
-import com.example.demo_database.dto.request.ApiResponse;
-import org.antlr.v4.runtime.atn.ErrorInfo;
+import com.example.demo_database.dto.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 // xử lí các Exception ở 1 khu vực tập trung thay vì try-catch rải rác trong các controller
 //
