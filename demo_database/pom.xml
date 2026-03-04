@@ -86,12 +86,29 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>6.4.1</version>
         </dependency>
-        <!-- Source: https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+        <!-- Nimbus -->
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>10.6</version>
             <scope>compile</scope>
+        </dependency>
+        <!-- oauth2 bat xac thuc bang token -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+            <version>3.5.7</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--    spring security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 	</dependencies>
 

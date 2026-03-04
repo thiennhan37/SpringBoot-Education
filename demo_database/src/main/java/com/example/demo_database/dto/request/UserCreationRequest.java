@@ -1,6 +1,7 @@
 package com.example.demo_database.dto.request;
 
 import com.example.demo_database.exception.ErrorCode;
+import com.example.demo_database.validatior.BirthConstraint;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,6 +19,7 @@ public class UserCreationRequest {
     @NotBlank(message = "FirstName must be not blank")
     private String first_name;
     private String last_name;
+    @BirthConstraint(min = 18, message = "BIRTHDAY_INVALID")
     @NotNull(message = "Birthday must be not null")
     private LocalDate birth;
 

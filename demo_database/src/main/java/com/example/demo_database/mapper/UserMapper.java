@@ -8,11 +8,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 //    @Mapping(target = "", source = "", ignore = true)
     UserResponse toUserResponse(User user);
-    User createUser(UserCreationRequest request);
+    User toUser(UserCreationRequest request);
+    List<UserResponse> toUserRepsponses(List<User> users);
+    @Mapping(target = "roles", ignore = true)
     void updateUser(@MappingTarget User user, UserUpdateRequest request);
 
 }

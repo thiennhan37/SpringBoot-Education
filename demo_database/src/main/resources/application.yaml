@@ -7,5 +7,10 @@ spring:
     url: "jdbc:mysql://localhost:3306/spring_boot"
     username: root
     password: NhanThien24
+  jpa:
+    hibernate:
+      ddl-auto: update
 jwt:
   signerKey: "eSNwp01GDWLGaME9rWUyq57isilK6b2v"
+  valid-duration: 20 #seconds
+  refreshable-duration: 120 #seconds

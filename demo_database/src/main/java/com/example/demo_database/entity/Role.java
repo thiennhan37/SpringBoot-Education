@@ -3,7 +3,6 @@ package com.example.demo_database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -13,13 +12,11 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 //@FieldDefaults(level = AccessLevel.PRIVATE)
-public class User {
+public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    private String username, password, first_name, last_name;
-    private LocalDate birth;
+    private String name;
+    private String description;
 
     @ManyToMany
-    private Set<Role> roles;
+    Set<Permission> permissions;
 }
