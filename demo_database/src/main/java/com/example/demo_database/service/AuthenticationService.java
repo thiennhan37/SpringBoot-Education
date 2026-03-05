@@ -66,9 +66,14 @@ public class AuthenticationService {
             Date now = new Date();
             Long ttl = Duration.between(now.toInstant(), expiryTime.toInstant()).getSeconds();
             if(expiryTime.after(now)){
+//                RedisToken redisToken = RedisToken.builder()
+//                        .jwtId(jti)
+//                        .timeToLive(ttl)
+//                        .build();
+//                redisTokenRepository.save(redisToken);
                 redisTokenRepository.save(RedisToken.builder()
-                                .jwtId(jti)
-                                .timeToLive(ttl)
+                        .jwtId(jti)
+                        .timeToLive(ttl)
                         .build());
             }
 //            log.info("logout successfully");
