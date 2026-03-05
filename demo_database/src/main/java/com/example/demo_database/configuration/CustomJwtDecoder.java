@@ -39,5 +39,7 @@ public class CustomJwtDecoder implements JwtDecoder {
                     .build();
         }
         return nimbusJwtDecoder.decode(token);
+        // là bước chuẩn của Spring để “đọc JWT ra object bảo mật” và cho framework dùng để xác thực request.
+        // còn bước introspect chỉ là check logic nghiệp vụ
     }
 }

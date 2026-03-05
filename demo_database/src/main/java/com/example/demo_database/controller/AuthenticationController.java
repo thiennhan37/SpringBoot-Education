@@ -7,17 +7,17 @@ import com.example.demo_database.dto.response.ApiResponse;
 import com.example.demo_database.dto.request.AuthenticationRequest;
 import com.example.demo_database.dto.response.AuthenticationResponse;
 import com.example.demo_database.dto.response.IntrospectResponse;
+import com.example.demo_database.dto.response.RefreshResponse;
 import com.example.demo_database.service.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 
 
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -40,17 +40,26 @@ public class AuthenticationController {
                 .result(result)
                 .build();
     }
-    @PostMapping("/logout")
-    public ApiResponse<Void> logout(@RequestBody LogoutRequest request) throws ParseException, JOSEException {
-        authenticationService.logout(request);
+//    @PostMapping("/logout")
+//    public ApiResponse<Void> logout(@RequestBody LogoutRequest request) throws ParseException, JOSEException {
+//        authenticationService.logout(request);
+//        return ApiResponse.<Void>builder()
+//                .build();
+//    }
+    @PostMapping
+    public ApiResponse<Void> logout(@RequestHeader("Authorization") String refreshToken)
+            throws ParseException, JOSEException
+    {
+        log.info(refreshToken);
+//        authenticationService.logout(request);
         return ApiResponse.<Void>builder()
                 .build();
     }
     @PostMapping("/refresh")
-    public ApiResponse<AuthenticationResponse> refreshToken(@RequestBody RefreshTokenRequest request)
+    public ApiResponse<RefreshResponse> refreshToken(@RequestBody RefreshTokenRequest request)
             throws ParseException, JOSEException {
         var result = authenticationService.refreshToken(request);
-        return ApiResponse.<AuthenticationResponse>builder()
+        return ApiResponse.<RefreshResponse>builder()
                 .result(result)
                 .build();
     }

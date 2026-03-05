@@ -39,9 +39,12 @@ public class SecurityConfig {
         httpSecurity.oauth2ResourceServer(oAuth2 ->
                 oAuth2.jwt(jwtConfigurer ->
                         jwtConfigurer.decoder(customJwtDecoder)
+                                // tất cả các requet có JWT đều đi qua customJwtDecoder
                                 .jwtAuthenticationConverter(jwtAuthenticationConverter())
+                                // nếu customJwtDecoder decode thành công thì convert scope -> role
                 )
                         .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                        // nếu decode thất bại
         );
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);

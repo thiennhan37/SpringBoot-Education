@@ -7,6 +7,10 @@ spring:
     url: "jdbc:mysql://localhost:3306/spring_boot"
     username: root
     password: NhanThien24
+  data:
+    redis:
+      host: "localhost"
+      port: 6379
   jpa:
     hibernate:
       ddl-auto: update
