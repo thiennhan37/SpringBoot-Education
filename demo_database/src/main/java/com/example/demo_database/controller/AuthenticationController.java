@@ -46,12 +46,13 @@ public class AuthenticationController {
 //        return ApiResponse.<Void>builder()
 //                .build();
 //    }
-    @PostMapping
-    public ApiResponse<Void> logout(@RequestHeader("Authorization") String refreshToken)
+    @PostMapping("/logout")
+    public ApiResponse<Void> logout(@RequestHeader("Authorization") String authHeader)
             throws ParseException, JOSEException
     {
-        log.info(refreshToken);
-//        authenticationService.logout(request);
+        String refreshToken = authHeader.replace("Bearer ", "");
+//        log.info(refreshToken);
+        authenticationService.logout(refreshToken);
         return ApiResponse.<Void>builder()
                 .build();
     }

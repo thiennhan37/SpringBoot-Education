@@ -81,7 +81,7 @@ public class JwtService {
         SignedJWT signedJWT = SignedJWT.parse(token);
         boolean verify = signedJWT.verify(verifier);
         Date expirationTime = signedJWT.getJWTClaimsSet().getExpirationTime();
-        if(!(verify && expirationTime.before(new Date())) )
+        if(!(verify && expirationTime.after(new Date())) )
             throw new MyAppException(ErrorCode.UNAUTHENTICATED);
         return JwtInfo.builder()
                 .jwtId(signedJWT.getJWTClaimsSet().getJWTID())

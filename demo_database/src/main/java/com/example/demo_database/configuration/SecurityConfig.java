@@ -22,7 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity // quan trong de su dung PreAuthorize
 public class SecurityConfig {
 
-    private final String[] PUBLIC_ENDPOINTS = {"/auth/log-in", "/auth/introspect", "/auth/logout", "/auth/refresh"};
+    private final String[] PUBLIC_ENDPOINTS = {"/auth/log-in", "/auth/introspect", "/auth/refresh"};
     private final String[] ADMIN_ENDPOINTS = {"/users"};
     @Autowired
     private CustomJwtDecoder customJwtDecoder;

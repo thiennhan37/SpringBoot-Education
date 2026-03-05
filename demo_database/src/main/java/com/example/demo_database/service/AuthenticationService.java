@@ -57,6 +57,7 @@ public class AuthenticationService {
                 .build();
     }
     public void logout(String refreshToken) throws ParseException, JOSEException {
+
         try{
             JwtInfo jwtInfo = jwtService.parseToken(refreshToken);
             String jti = jwtInfo.getJwtId();
@@ -70,9 +71,11 @@ public class AuthenticationService {
                                 .timeToLive(ttl)
                         .build());
             }
+//            log.info("logout successfully");
         } catch (MyAppException exception){
             log.info("token has been expired");
         }
+
     }
 //    public void logout(LogoutRequest request) throws ParseException, JOSEException {
 //        try{
