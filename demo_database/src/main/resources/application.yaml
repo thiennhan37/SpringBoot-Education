@@ -16,5 +16,5 @@ spring:
       ddl-auto: update
 jwt:
   signerKey: "eSNwp01GDWLGaME9rWUyq57isilK6b2v"
-  valid-duration: 20 #seconds
-  refreshable-duration: 120 #seconds
+  valid-duration: 3000 #seconds
+  refreshable-duration: 300 #seconds

@@ -16,6 +16,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfiguration;
+
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -39,7 +45,7 @@ public class SecurityConfig {
         httpSecurity.oauth2ResourceServer(oAuth2 ->
                 oAuth2.jwt(jwtConfigurer ->
                         jwtConfigurer.decoder(customJwtDecoder)
-                                // tất cả các requet có JWT đều đi qua customJwtDecoder
+                                // tất cả các request có JWT đều đi qua customJwtDecoder
                                 .jwtAuthenticationConverter(jwtAuthenticationConverter())
                                 // nếu customJwtDecoder decode thành công thì convert scope -> role
                 )
@@ -50,7 +56,26 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
         return httpSecurity.build();
     }
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
 
+        // Cách mới trong Spring Boot 3
+        configuration.addAllowedOrigin("http://localhost:5173"); // FE
+        configuration.addAllowedMethod("GET");
+        configuration.addAllowedMethod("POST");
+        configuration.addAllowedMethod("PUT");
+        configuration.addAllowedMethod("DELETE");
+        configuration.addAllowedMethod("OPTIONS");
+        configuration.addAllowedHeader("Authorization");
+        configuration.addAllowedHeader("Content-Type");
+        configuration.setExposedHeaders(java.util.List.of("Authorization"));
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
     // custom scope -> role
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter(){
